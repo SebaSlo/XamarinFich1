@@ -4,8 +4,6 @@
              x:Class="XamarinFich1.Views.VEjercicios"
              Title="{Binding Title}">
   <ListView ItemsSource="{Binding ItemsGrouped}"
-           
-            
             HasUnevenRows="true"
             GroupShortNameBinding="{Binding Key}"
             IsGroupingEnabled="true"

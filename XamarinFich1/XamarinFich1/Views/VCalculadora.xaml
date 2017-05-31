@@ -35,10 +35,10 @@
                 <Label Text="{Binding Result}" Margin="8" VerticalOptions="Fill"></Label>
             </StackLayout>
             <Label  Text="Resuelva una ecuación cuadrática" FontAttributes="Bold"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Entry Text="{Binding Oper1}" Placeholder="a" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
-                <Entry Text="{Binding Oper2}" Placeholder="b" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
-                <Entry Text="{Binding Oper3}" Placeholder="c" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry Text="{Binding Oper1}"></Entry>
+                <Entry Text="{Binding Oper2}"></Entry>
+                <Entry Text="{Binding Oper3}"></Entry>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="8">
                 <Button Command="{Binding CalculateCommand}" CommandParameter="6" WidthRequest="170" Text="Aplicar Resolvente." HorizontalOptions="Center"></Button>
