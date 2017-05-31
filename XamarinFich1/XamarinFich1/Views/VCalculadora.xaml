@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFich1.Views.VCalculadora">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="Margin" Value="8"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Margin="10">
+            <Label Text="Operaciones matemáticas comunes" FontAttributes="Bold"></Label>
+            <StackLayout >
+                <StackLayout Orientation="Horizontal">
+                    <Entry Text="{Binding Oper1}" Placeholder="Operando 1"></Entry>
+                    <Entry Text="{Binding Oper2}" Placeholder="Operando 2"></Entry>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="8">
+                <Button Command="{Binding CalculateCommand}" CommandParameter="0" WidthRequest="100" Text="Suma" ></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="1" WidthRequest="100" Text="Resta"></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="2" WidthRequest="100" Text="Producto"></Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="8">
+                <Button Command="{Binding CalculateCommand}" CommandParameter="3" WidthRequest="100" Text="Cociente"></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="4" WidthRequest="100" Text="Cuadrado"></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="5" WidthRequest="100" Text="Raiz"></Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Resultado: " Margin="8" VerticalOptions="Fill"></Label>
+                <Label Text="{Binding Result}" Margin="8" VerticalOptions="Fill"></Label>
+            </StackLayout>
+            <Label  Text="Resuelva una ecuación cuadrática" FontAttributes="Bold"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding Oper1}" Placeholder="a" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
+                <Entry Text="{Binding Oper2}" Placeholder="b" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
+                <Entry Text="{Binding Oper3}" Placeholder="c" WidthRequest="20" HorizontalTextAlignment="Center"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="8">
+                <Button Command="{Binding CalculateCommand}" CommandParameter="6" WidthRequest="170" Text="Aplicar Resolvente." HorizontalOptions="Center"></Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Raíz 1: "></Label>
+                <Label Text="{Binding R1}"></Label>
+                <Label Text=" - "></Label>
+                <Label Text="Raíz 2: "></Label>
+                <Label Text="{Binding R2}"></Label>
+            </StackLayout>
+            <Label Text="Resuelva Productos entre Vectores." FontAttributes="Bold"></Label>
+
+            <Label Text="Vector 1: "></Label>
+            <Editor></Editor>
+            <Label Text="Valores separados por espacios" HorizontalOptions="End" FontAttributes="Italic"></Label>
+
+
+            <Label Text="Vector 2: "></Label>
+            <Editor ></Editor>
+            <Label Text="Valores separados por espacios" HorizontalOptions="End" FontAttributes="Italic"></Label>
+
+            <StackLayout Orientation="Horizontal" Margin="8">
+                <Button Text="Producto Punto"></Button>
+                <Button Text="Producto Vectorial"></Button>
+            </StackLayout>
+            <Label Text="{Binding}" Margin="8" VerticalOptions="Fill"></Label>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

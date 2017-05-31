@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFich1.Views.VEjemplos"
+             Title="{Binding Title}">
+
+    <ListView ItemsSource="{Binding Options}"
+              SelectedItem="{Binding SelectedItem}"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            CachingStrategy="RecycleElement"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            RefreshCommand="{Binding RefreshDataCommand}">
+        <ListView.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="Calculadora" >
+                
+            </TapGestureRecognizer>
+        </ListView.GestureRecognizers>
+        <ListView.Header>
+            <StackLayout Padding="10" 
+                   Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="Beige">
+                <Label Text="Elije el ejemplo que queres ver"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="FillAndExpand"
+               TextColor="Black"
+               FontAttributes="Bold"/>
+            </StackLayout>
+        </ListView.Header>
+        <!--Built in Cells
+      -->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18"></Label>
+                        <Label Text="{Binding Description}" FontSize="16" TextColor="Gray" Margin="10,0,0,0"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <ListView.Footer>
+            <StackLayout Padding="10"
+                   Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#dadada">
+                <Label Text="Footer" 
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="FillAndExpand" 
+               TextColor="Black"
+               FontAttributes="Bold"/>
+            </StackLayout>
+        </ListView.Footer>
+    </ListView>
+</ContentPage>
