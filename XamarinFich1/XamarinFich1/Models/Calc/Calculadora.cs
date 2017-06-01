@@ -120,11 +120,14 @@ namespace XamarinFich1.Model.Calc
         {
             v = new int[a.Length];
             Cant = a.Length;
-            for (int i = 0; i < a.Length; i++)
-            {
-                v[i] = a[i];
-            }
+            Array.Copy(a, v, a.Length);
         }
+        /// <summary>
+        /// Generate a random vector
+        /// </summary>
+        /// <param name="cant">Cantidad de elementos que desea</param>
+        /// <param name="min">Valor mínimo posible de un elemento</param>
+        /// <param name="max">Valor máiximo posible de un elemento</param>
         public Vector(int cant, int min, int max)
         {
             v = new int[cant];
@@ -135,6 +138,8 @@ namespace XamarinFich1.Model.Calc
                 v[i] = r.Next(min, max);
             }
         }
+        
+        //INDIZADOR
         public int this[int index]
         {
             get { return v[index]; }
@@ -144,14 +149,17 @@ namespace XamarinFich1.Model.Calc
         //Agregar: agrega un elemento al final del vector
         public void Add(int a)
         {
-            int[] aux = new int[++Cant];
-            Array.Copy(this.v, aux, Cant - 1);
-            //for (int i = 0; i < Cant-1; i++)
-            //{
-            //    aux[i] = v[i];
-            //}
-            aux[Cant - 1] = a;
-            v = aux;
+            if (Cant < v.Length)
+            {
+                v[Cant++] = a;
+            }
+            else
+            {
+                int[] aux = new int[1+Cant];
+                Array.Copy(this.v, aux, v.Length);
+                v = aux;
+                Add(a);
+            }
         }
 
         public void Copy(out Vector a)
@@ -170,15 +178,32 @@ namespace XamarinFich1.Model.Calc
 
         //Implementar los siguientes métodos
         //producto punto
-        public double ProductoPunto(Vector a, Vector b)
+        public double ProductoPunto(Vector a)
         {
-            throw new NotImplementedException();
-            
+            double result = 0D;
+            if (a.Cant != Cant) throw new InvalidOperationException();
+            for (int i = 0; i < this.Cant; i++)
+            {
+                result +=this[i] * a[i];
+            }
+            return result;
         }
         //producto vectorial
-        public Vector ProductoVectorial(Vector a, Vector b)
+        public Vector ProductoVectorial(Vector a)
         {
-            throw new NotImplementedException();
+            if (Cant!=3 || a.Cant!=3) throw new InvalidOperationException();
+            Vector aux = new Vector(this.Cant);
+            //Componenete x
+            aux[0] = this[1] * a[2] - a[1] * this[2];
+            aux[1] = this[0] * a[2] - a[0] * this[2];
+            aux[2] = this[0] * a[1] - a[0] * this[1];
+
+            return aux;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[{0} {1} {2}]",v[0],v[1],v[2]);
         }
 
         #region Pruebas
@@ -267,7 +292,6 @@ inicio = DateTime.Now;
         //Implementar los siguientes métodos
         //Sumar
         //Multiplicar
-        //Inversa
 
         #region Pruebas
         /*

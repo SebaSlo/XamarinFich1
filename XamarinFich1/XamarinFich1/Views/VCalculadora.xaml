@@ -16,8 +16,8 @@
             <Label Text="Operaciones matemáticas comunes" FontAttributes="Bold"></Label>
             <StackLayout >
                 <StackLayout Orientation="Horizontal">
-                    <Entry Text="{Binding Oper1}" Placeholder="Operando 1"></Entry>
-                    <Entry Text="{Binding Oper2}" Placeholder="Operando 2"></Entry>
+                    <Entry Text="{Binding Oper1, Mode=TwoWay}" Placeholder="Operando A"></Entry>
+                    <Entry Text="{Binding Oper2}" Placeholder="Operando B"></Entry>
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="8">
@@ -27,45 +27,57 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="8">
                 <Button Command="{Binding CalculateCommand}" CommandParameter="3" WidthRequest="100" Text="Cociente"></Button>
-                <Button Command="{Binding CalculateCommand}" CommandParameter="4" WidthRequest="100" Text="Cuadrado"></Button>
-                <Button Command="{Binding CalculateCommand}" CommandParameter="5" WidthRequest="100" Text="Raiz"></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="4" WidthRequest="100" Text="A^B"></Button>
+                <Button Command="{Binding CalculateCommand}" CommandParameter="5" WidthRequest="100" Text="Raiz de A"></Button>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Resultado: " Margin="8" VerticalOptions="Fill"></Label>
                 <Label Text="{Binding Result}" Margin="8" VerticalOptions="Fill"></Label>
             </StackLayout>
             <Label  Text="Resuelva una ecuación cuadrática" FontAttributes="Bold"></Label>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Entry Text="{Binding Oper1}"></Entry>
-                <Entry Text="{Binding Oper2}"></Entry>
-                <Entry Text="{Binding Oper3}"></Entry>
-            </StackLayout>
+            <Grid HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding A}" Placeholder="A" HorizontalTextAlignment="Center" Grid.Column="0" HorizontalOptions="FillAndExpand"></Entry>
+                <Entry Text="{Binding B}" Placeholder="B" HorizontalTextAlignment="Center" Grid.Column="1" HorizontalOptions="FillAndExpand"></Entry>
+                <Entry Text="{Binding C}" Placeholder="C" HorizontalTextAlignment="Center" Grid.Column="2" HorizontalOptions="FillAndExpand"></Entry>
+            </Grid>
             <StackLayout Orientation="Horizontal" Margin="8">
-                <Button Command="{Binding CalculateCommand}" CommandParameter="6" WidthRequest="170" Text="Aplicar Resolvente." HorizontalOptions="Center"></Button>
+                <Button Command="{Binding CuadraticResolve}" Text="Aplicar Resolvente" HorizontalOptions="Center"></Button>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Raíz 1: "></Label>
-                <Label Text="{Binding R1}"></Label>
-                <Label Text=" - "></Label>
-                <Label Text="Raíz 2: "></Label>
-                <Label Text="{Binding R2}"></Label>
-            </StackLayout>
-            <Label Text="Resuelva Productos entre Vectores." FontAttributes="Bold"></Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Raíz 1: "></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding R1}"></Label>
+                <Label Grid.Row="1" Grid.Column="0" Text="Raíz 2: "></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding R2}"></Label>
+            </Grid>
+            <Label Text="Resuelva Productos entre Vectores." FontAttributes="Bold" Margin="0, 20, 0, 10"></Label>
 
             <Label Text="Vector 1: "></Label>
-            <Editor></Editor>
+            <Entry Text="{Binding Vector1}"></Entry>
             <Label Text="Valores separados por espacios" HorizontalOptions="End" FontAttributes="Italic"></Label>
 
 
             <Label Text="Vector 2: "></Label>
-            <Editor ></Editor>
+            <Entry  Text="{Binding Vector2}" ></Entry>
             <Label Text="Valores separados por espacios" HorizontalOptions="End" FontAttributes="Italic"></Label>
 
             <StackLayout Orientation="Horizontal" Margin="8">
-                <Button Text="Producto Punto"></Button>
-                <Button Text="Producto Vectorial"></Button>
+                <Button Command="{Binding ProdPunto}" CommandParameter="a" Text="Producto Punto"></Button>
+                <Button Command="{Binding ProdVectorial}" CommandParameter="a" Text="Producto Vectorial"></Button>
             </StackLayout>
-            <Label Text="{Binding}" Margin="8" VerticalOptions="Fill"></Label>
+            <Label Text="{Binding VectorResult}" Margin="8" VerticalOptions="Fill"></Label>
         </StackLayout>
     </ScrollView>
 </ContentPage>

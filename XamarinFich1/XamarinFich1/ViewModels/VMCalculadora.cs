@@ -15,7 +15,7 @@ namespace XamarinFich1.ViewModels
     public class VMCalculadora : VMBase
     {
         private Calculadora ca = new Calculadora();
-
+        private Vector v1, v2;
 
         private double result;
         public double Result
@@ -37,7 +37,7 @@ namespace XamarinFich1.ViewModels
         public double R2
         {
             get { return r2; }
-            set { SetProperty(ref r1, value); }
+            set { SetProperty(ref r2, value); }
         }
 
         public double oper1;
@@ -46,19 +46,77 @@ namespace XamarinFich1.ViewModels
         public double Oper1 { get { return oper1; } set { SetProperty(ref oper1, value); } }
         public double Oper2 { get { return oper2; } set { SetProperty(ref oper2, value); } }
         public double Oper3 { get { return oper3; } set { SetProperty(ref oper3, value); } }
+        public double a;
+        public double b;
+        public double c;
+        public double A { get { return a; } set { SetProperty(ref a, value); } }
+        public double B { get { return b; } set { SetProperty(ref b, value); } }
+        public double C { get { return c; } set { SetProperty(ref c, value); } }
+
+        private string vector1;
+        public string Vector1
+        {
+            get { return vector1; }
+            set
+            {
+                SetProperty(ref vector1, value);
+            }
+        }
+
+        private string vector2;
+        public string Vector2
+        {
+            get { return vector2; }
+            set
+            {
+                SetProperty(ref vector2, value);
+            }
+        }
+
+
+        private string vecResult;
+        public string VectorResult
+        {
+            get { return vecResult; }
+            set { SetProperty(ref vecResult, value); }
+        }
+
 
         private ICommand calculateCommand;
-
         public ICommand CalculateCommand
         {
             get { return calculateCommand; }
             set { calculateCommand = value; }
         }
 
+
+        private ICommand cuadraticResolve;
+        public ICommand CuadraticResolve
+        {
+            get { return cuadraticResolve; }
+            set { cuadraticResolve = value; }
+        }
+
+        private ICommand prodPunto;
+        public ICommand ProdPunto
+        {
+            get { return prodPunto; }
+            set { prodPunto = value; }
+        }
+
+        private ICommand prodVectorial;
+        public ICommand ProdVectorial
+        {
+            get { return prodVectorial; }
+            set { prodVectorial = value; }
+        }
+
         public VMCalculadora(INavegable nav)
         {
             Title = "Calculadora re trucha";
             Navigator = nav;
+            v1 = new Vector();
+            v2 = new Vector();
 
             //Comanders
             CalculateCommand = new Command<string>(
@@ -66,7 +124,32 @@ namespace XamarinFich1.ViewModels
                 {
                     var op = (OpcionesCalcApp)int.Parse(i);
                     Resolver(op, Oper1, Oper2, Oper3);
-                }, null);
+                },
+                null);
+            CuadraticResolve = new Command<string>(
+                (i) =>
+            {
+                var op = (OpcionesCalcApp)int.Parse(i);
+                Resolver(op, A, B, C);
+            },
+                (i) =>
+            {
+                return A != 0 && B != 0 && C != 0;
+            });
+            ProdPunto = new Command<string>(
+                (a) =>
+            {
+                this.AuxVectorTratment(Vector1, v1);
+                this.AuxVectorTratment(Vector2, v2);
+                VectorResult = v1.ProductoPunto(v2).ToString();
+            },null);
+            ProdVectorial = new Command<string>(
+                (a) =>
+            {
+                this.AuxVectorTratment(Vector1, v1);
+                this.AuxVectorTratment(Vector2, v2);
+                VectorResult = v1.ProductoVectorial(v2).ToString();
+            },null);
         }
 
         public void Resolver(OpcionesCalcApp opCalc, double op1 = 0, double op2 = 0, double op3 = 0)
@@ -102,6 +185,21 @@ namespace XamarinFich1.ViewModels
                     break;
                 default:
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Método que convierte un string con números en un Vector
+        /// </summary>
+        /// <param name="s">string source de los datos</param>
+        /// <param name="v">Vector destino de los datos</param>
+        private void AuxVectorTratment(string s, Vector v)
+        {
+            s.Trim();
+            var aux = s.Split(' ');
+            foreach (string item in aux)
+            {
+                if(item!=string.Empty&&item!="") v.Add(int.Parse(item));
             }
         }
     }
