@@ -115,8 +115,6 @@ namespace XamarinFich1.ViewModels
         {
             Title = "Calculadora re trucha";
             Navigator = nav;
-            v1 = new Vector();
-            v2 = new Vector();
 
             //Comanders
             CalculateCommand = new Command<string>(
@@ -139,17 +137,43 @@ namespace XamarinFich1.ViewModels
             ProdPunto = new Command<string>(
                 (a) =>
             {
-                this.AuxVectorTratment(Vector1, v1);
-                this.AuxVectorTratment(Vector2, v2);
-                VectorResult = v1.ProductoPunto(v2).ToString();
-            },null);
+                try
+                {
+                    this.AuxVectorTratment(Vector1, ref v1);
+                    this.AuxVectorTratment(Vector2, ref v2);
+                    VectorResult = v1.ProductoVectorial(v2).ToString();
+                }
+                catch (NullReferenceException e)
+                {
+                    this.VectorResult = "Poné bien los vectores! no admite el vector nulo!";
+                    return;
+                }
+                catch (InvalidOperationException e)
+                {
+                    this.VectorResult = "Poné bien los vectores! Tienen que tener la misma cantidad de elementos!";
+                    return;
+                }
+            }, null);
             ProdVectorial = new Command<string>(
                 (a) =>
             {
-                this.AuxVectorTratment(Vector1, v1);
-                this.AuxVectorTratment(Vector2, v2);
-                VectorResult = v1.ProductoVectorial(v2).ToString();
-            },null);
+                try
+                {
+                    this.AuxVectorTratment(Vector1,ref v1);
+                    this.AuxVectorTratment(Vector2,ref v2);
+                    VectorResult = v1.ProductoVectorial(v2).ToString();
+                }
+                catch (NullReferenceException e)
+                {
+                    this.VectorResult = "Poné bien los vectores! no admite el vector nulo!";
+                    return;
+                }
+                catch (InvalidOperationException e)
+                {
+                    this.VectorResult = "Poné bien los vectores! Tienen que tener la misma cantidad de elementos!";
+                    return;
+                }
+            }, null);
         }
 
         public void Resolver(OpcionesCalcApp opCalc, double op1 = 0, double op2 = 0, double op3 = 0)
@@ -193,13 +217,14 @@ namespace XamarinFich1.ViewModels
         /// </summary>
         /// <param name="s">string source de los datos</param>
         /// <param name="v">Vector destino de los datos</param>
-        private void AuxVectorTratment(string s, Vector v)
+        private void AuxVectorTratment(string s,ref Vector v)
         {
             s.Trim();
             var aux = s.Split(' ');
+            v = new Vector();
             foreach (string item in aux)
             {
-                if(item!=string.Empty&&item!="") v.Add(int.Parse(item));
+                if (item != string.Empty && item != "") v.Add(int.Parse(item));
             }
         }
     }

@@ -70,8 +70,8 @@ namespace XamarinFich1.Model.Calc
             private set { _r1 = value; }
         }
 
-        private double _r2;
 
+        private double _r2;
         public double R2
         {
             get { return _r2; }
