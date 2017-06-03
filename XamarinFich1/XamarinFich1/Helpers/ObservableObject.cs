@@ -28,7 +28,7 @@ namespace XamarinFich1.Helpers
                 return false;
 
             backingStore = value;
-            onChanged?.Invoke();
+            if(onChanged!=null) onChanged.Invoke();
             OnPropertyChanged(propertyName);
             return true;
         }

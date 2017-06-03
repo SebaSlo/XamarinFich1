@@ -159,6 +159,7 @@ namespace XamarinFich1.ViewModels
                 this.AuxVectorTratment(Vector1, ref v1);
                 this.AuxVectorTratment(Vector2, ref v2);
                 VectorResult = v1.ProductoPunto(v2).ToString();
+                
             }
             catch (NullReferenceException e)
             {
