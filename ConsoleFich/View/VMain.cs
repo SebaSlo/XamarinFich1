@@ -7,7 +7,7 @@ namespace ConsoleFich.View
 {
     public enum OpcionesConsoleApp { Calculadora, Agenda, Zodiaco, salir };
     
-    public class VMain
+    public class VMain:VMBase
     {
 
         private OpcionesConsoleApp opCode;
@@ -28,6 +28,8 @@ namespace ConsoleFich.View
 
         public VMain(VMMain viemodel)
         {
+            Title = "APP CONSOLE FICH. Curso de programación C#";
+            Console.Title = Title;
             vm = viemodel;
         }
 
@@ -121,7 +123,7 @@ namespace ConsoleFich.View
                 Linea();
                 Console.WriteLine("Calculadora:");
                 Console.WriteLine("------------");
-                Console.WriteLine("\n\t1) {0}\n\t2) {1}\n\t3) {2}\n\t4) {3}\n\t5) {4}\n\t6) {5}\n\t7) {6}\n\t8) {7}",
+                Console.WriteLine("\n\t1) {0}\n\t2) {1}\n\t3) {2}\n\t4) {3}\n\t5) {4}\n\t6) {5}\n\t7) {6}\n\t8) {7}\n\t {8}",
                     OpcionesCalcApp.Sumar,
                     OpcionesCalcApp.Restar,
                     OpcionesCalcApp.Multiplicar,
@@ -129,6 +131,7 @@ namespace ConsoleFich.View
                     OpcionesCalcApp.Potencia,
                     OpcionesCalcApp.Raiz,
                     OpcionesCalcApp.Ecuacion_Cuadratica,
+                    OpcionesCalcApp.Vectores,
                     OpcionesCalcApp.Salir);
 
                 Linea();
@@ -204,6 +207,21 @@ namespace ConsoleFich.View
                             cal.Resolver(OpCalc, a, b, c);
                             //Escribir las raíces
                             Console.WriteLine("Raiz 1: {0}\nRaiz 2: {1}", cal.R1, cal.R2);
+
+                            break;
+                        }
+                    case OpcionesCalcApp.Vectores:
+                        {
+                            Console.WriteLine("Escriba los vectores separados por espacios.");
+                            Console.Write("Vector 1:");
+                            cal.Vector1= Console.ReadLine();
+                            Console.Write("Vector 2:");
+                            cal.Vector2 = Console.ReadLine();
+
+                            cal.ProductoPunto();
+                            Console.WriteLine("Producto Punto: {0}", cal.VectorResult);
+                            cal.ProductoVectorial();
+                            Console.WriteLine("Producto vectorial: {0}", cal.VectorResult);
 
                             break;
                         }

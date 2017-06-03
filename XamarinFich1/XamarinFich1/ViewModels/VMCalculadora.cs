@@ -10,7 +10,7 @@ using XamarinFich1.Services;
 
 namespace XamarinFich1.ViewModels
 {
-    public enum OpcionesCalcApp { Sumar, Restar, Multiplicar, Dividir, Potencia, Raiz, Ecuacion_Cuadratica, Salir };
+    public enum OpcionesCalcApp { Sumar, Restar, Multiplicar, Dividir, Potencia, Raiz, Ecuacion_Cuadratica, Vectores, Salir };
 
     public class VMCalculadora : VMBase
     {
@@ -18,42 +18,48 @@ namespace XamarinFich1.ViewModels
         private Vector v1, v2;
 
         private double result;
+        private double r1;
+        private double r2;
+        public double oper1;
+        public double oper2;
+        public double oper3;
+        public double a;
+        public double b;
+        public double c;
+        private string vector1;
+        private string vector2;
+        private string vecResult;
+
         public double Result
         {
             get { return result; }
             set { SetProperty(ref result, value); }
         }
-
-
-        private double r1;
+        
         public double R1
         {
             get { return r1; }
             set { SetProperty(ref r1, value); }
         }
-
-
-        private double r2;
+        
         public double R2
         {
             get { return r2; }
             set { SetProperty(ref r2, value); }
         }
 
-        public double oper1;
-        public double oper2;
-        public double oper3;
         public double Oper1 { get { return oper1; } set { SetProperty(ref oper1, value); } }
+
         public double Oper2 { get { return oper2; } set { SetProperty(ref oper2, value); } }
+
         public double Oper3 { get { return oper3; } set { SetProperty(ref oper3, value); } }
-        public double a;
-        public double b;
-        public double c;
+
         public double A { get { return a; } set { SetProperty(ref a, value); } }
+
         public double B { get { return b; } set { SetProperty(ref b, value); } }
+
         public double C { get { return c; } set { SetProperty(ref c, value); } }
 
-        private string vector1;
         public string Vector1
         {
             get { return vector1; }
@@ -63,7 +69,6 @@ namespace XamarinFich1.ViewModels
             }
         }
 
-        private string vector2;
         public string Vector2
         {
             get { return vector2; }
@@ -73,14 +78,11 @@ namespace XamarinFich1.ViewModels
             }
         }
 
-
-        private string vecResult;
         public string VectorResult
         {
             get { return vecResult; }
             set { SetProperty(ref vecResult, value); }
         }
-
 
         private ICommand calculateCommand;
         public ICommand CalculateCommand
@@ -88,8 +90,7 @@ namespace XamarinFich1.ViewModels
             get { return calculateCommand; }
             set { calculateCommand = value; }
         }
-
-
+        
         private ICommand cuadraticResolve;
         public ICommand CuadraticResolve
         {
@@ -124,56 +125,49 @@ namespace XamarinFich1.ViewModels
                     Resolver(op, Oper1, Oper2, Oper3);
                 },
                 null);
-            CuadraticResolve = new Command<string>(
-                (i) =>
+            CuadraticResolve = new Command<string>((i) =>
             {
                 var op = (OpcionesCalcApp)int.Parse(i);
                 Resolver(op, A, B, C);
-            },
-                (i) =>
+            },null);
+            ProdPunto = new Command(ProductoPunto, null);
+            ProdVectorial = new Command(ProductoVectorial, null);
+        }
+
+        public void ProductoVectorial()
+        {
+            try
             {
-                return A != 0 && B != 0 && C != 0;
-            });
-            ProdPunto = new Command<string>(
-                (a) =>
+                this.AuxVectorTratment(Vector1, ref v1);
+                this.AuxVectorTratment(Vector2, ref v2);
+                VectorResult = v1.ProductoVectorial(v2).ToString();
+            }
+            catch (NullReferenceException e)
             {
-                try
-                {
-                    this.AuxVectorTratment(Vector1, ref v1);
-                    this.AuxVectorTratment(Vector2, ref v2);
-                    VectorResult = v1.ProductoVectorial(v2).ToString();
-                }
-                catch (NullReferenceException e)
-                {
-                    this.VectorResult = "Poné bien los vectores! no admite el vector nulo!";
-                    return;
-                }
-                catch (InvalidOperationException e)
-                {
-                    this.VectorResult = "Poné bien los vectores! Tienen que tener la misma cantidad de elementos!";
-                    return;
-                }
-            }, null);
-            ProdVectorial = new Command<string>(
-                (a) =>
+                this.VectorResult = "Pon bien los vectores! no admite el vector nulo!";
+            }
+            catch (InvalidOperationException e)
             {
-                try
-                {
-                    this.AuxVectorTratment(Vector1,ref v1);
-                    this.AuxVectorTratment(Vector2,ref v2);
-                    VectorResult = v1.ProductoVectorial(v2).ToString();
-                }
-                catch (NullReferenceException e)
-                {
-                    this.VectorResult = "Poné bien los vectores! no admite el vector nulo!";
-                    return;
-                }
-                catch (InvalidOperationException e)
-                {
-                    this.VectorResult = "Poné bien los vectores! Tienen que tener la misma cantidad de elementos!";
-                    return;
-                }
-            }, null);
+                this.VectorResult = "Pon bien los vectores! Solo de 3 elementos!";
+            }
+        }
+
+        public void ProductoPunto()
+        {
+            try
+            {
+                this.AuxVectorTratment(Vector1, ref v1);
+                this.AuxVectorTratment(Vector2, ref v2);
+                VectorResult = v1.ProductoPunto(v2).ToString();
+            }
+            catch (NullReferenceException e)
+            {
+                this.VectorResult = "Pon bien los vectores! no admite el vector nulo!";
+            }
+            catch (InvalidOperationException e)
+            {
+                this.VectorResult = "Pon bien los vectores! Tienen que tener la misma cantidad de elementos!";
+            }
         }
 
         public void Resolver(OpcionesCalcApp opCalc, double op1 = 0, double op2 = 0, double op3 = 0)
@@ -224,7 +218,8 @@ namespace XamarinFich1.ViewModels
             v = new Vector();
             foreach (string item in aux)
             {
-                if (item != string.Empty && item != "") v.Add(int.Parse(item));
+                if (item != string.Empty && item != "")
+                    v.Add(int.Parse(item));
             }
         }
     }

@@ -33,6 +33,7 @@ namespace XamarinFich1.ViewModels
             {
                 SetProperty(ref selectedItem, value);
                 if(selectedItem!=null) Navigator.GoToPage(selectedItem.Name) ;
+                selectedItem = null;
             }
         }
 

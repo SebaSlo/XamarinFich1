@@ -7,6 +7,34 @@ using System.Windows.Input;
 
 namespace XamarinFich1.Helpers
 {
+    public class Command : ICommand
+    {
+        private Action execute;
+        private Func<bool> canExecute;
+        public Command(Action exec, Func<bool> canExec)
+        {
+            this.execute = exec;
+            this.canExecute = canExec;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            if (canExecute == null) return true;
+            return canExecute();
+        }
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {
+            if (execute != null) execute();
+        }
+        public void RaiseCanExecuteChanged()
+        {
+            if (CanExecuteChanged != null)
+                CanExecuteChanged(null, new EventArgs());
+        }
+    }
+
     public class Command<T> : ICommand
     {
         private Action<T> execute;

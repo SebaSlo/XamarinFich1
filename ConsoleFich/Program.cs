@@ -11,9 +11,7 @@ namespace ConsoleFich
             {
                 Title = "Aplicacion de consola. Curso C# FICH"
             });
-
             mainApp.AppConsoleRun();
-
         }
     }
 }

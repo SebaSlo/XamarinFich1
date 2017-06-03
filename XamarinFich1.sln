@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinFich1.Android", "XamarinFich1\XamarinFich1.Android\XamarinFich1.Android.csproj", "{88698557-FB3B-46E3-9A10-FDE6B259A260}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BECDBE53-4FA7-415E-9F7A-8F49780AA1FF} = {BECDBE53-4FA7-415E-9F7A-8F49780AA1FF}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinFich1", "XamarinFich1\XamarinFich1\XamarinFich1.csproj", "{BECDBE53-4FA7-415E-9F7A-8F49780AA1FF}"
 EndProject

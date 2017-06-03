@@ -7,15 +7,11 @@
     <ListView ItemsSource="{Binding Options}"
               SelectedItem="{Binding SelectedItem}"
             HasUnevenRows="true"
-            IsPullToRefreshEnabled="true"
+            IsPullToRefreshEnabled="false"
             CachingStrategy="RecycleElement"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             RefreshCommand="{Binding RefreshDataCommand}">
-        <ListView.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="Calculadora" >
-                
-            </TapGestureRecognizer>
-        </ListView.GestureRecognizers>
+        
         <ListView.Header>
             <StackLayout Padding="10" 
                    Orientation="Horizontal"
