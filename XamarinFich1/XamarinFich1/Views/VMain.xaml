@@ -14,11 +14,11 @@
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="0" BackgroundColor="#2196F3" TextColor="White" VerticalOptions="FillAndExpand" x:Name="btTeoria" Text="Teoría C#" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btTeoria}}"/>
-            <Button Grid.Column="1" Grid.Row="0" BackgroundColor="#2196F3" TextColor="White" VerticalOptions="FillAndExpand" x:Name="btEjemplos" Text="Ejemplos" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btEjemplos}}"/>
-            <Button Grid.Column="0" Grid.Row="1" BackgroundColor="#2196F3" TextColor="White" VerticalOptions="FillAndExpand" x:Name="btEjercicios" Text="Ejercicios" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btEjercicios}}"/>
-            <Button Grid.Column="1" Grid.Row="1" BackgroundColor="#2196F3" TextColor="White" VerticalOptions="FillAndExpand" x:Name="btWPF" Text="WPF" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btWPF}}"/>
-            <Button Grid.Column="0" Grid.Row="2" BackgroundColor="#2196F3" TextColor="White" VerticalOptions="FillAndExpand" x:Name="btXamarin" Text="Xamarin" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btXamarin}}"/>
+            <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource NavigateButton}" x:Name="btTeoria" Text="Teoría C#" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btTeoria}}"/>
+            <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource NavigateButton}" x:Name="btEjemplos" Text="Ejemplos" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btEjemplos}}"/>
+            <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource NavigateButton}" x:Name="btEjercicios" Text="Ejercicios" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btEjercicios}}"/>
+            <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource NavigateButton}" x:Name="btWPF" Text="WPF" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btWPF}}"/>
+            <Button Grid.Column="0" Grid.Row="2" Style="{StaticResource NavigateButton}" x:Name="btXamarin" Text="Xamarin" Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btXamarin}}"/>
         </Grid>
     </ScrollView>
 </ContentPage>

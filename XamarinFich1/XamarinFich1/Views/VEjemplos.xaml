@@ -16,7 +16,7 @@
             <StackLayout Padding="10" 
                    Orientation="Horizontal"
                    HorizontalOptions="FillAndExpand"
-                   BackgroundColor="Beige">
+                   BackgroundColor="{StaticResource CSharpColor}">
                 <Label Text="Elije el ejemplo que queres ver"
                HorizontalTextAlignment="Center"
                HorizontalOptions="FillAndExpand"
@@ -41,7 +41,7 @@
             <StackLayout Padding="10"
                    Orientation="Horizontal"
                    HorizontalOptions="FillAndExpand"
-                   BackgroundColor="#dadada">
+                   BackgroundColor="{StaticResource CSharpColor}">
                 <Label Text="Footer" 
                HorizontalTextAlignment="Center" 
                HorizontalOptions="FillAndExpand" 

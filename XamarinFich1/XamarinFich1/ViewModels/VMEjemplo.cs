@@ -42,8 +42,7 @@ namespace XamarinFich1.ViewModels
         public VMEjemplo(INavegable nav)
         {
             Title = "Ejemplos de Código";
-            Navigator = nav;
-            
+            Navigator = nav;            
 
             //creo las opciones que el usuario puede elegir
             Options = new List<OptionExample>()

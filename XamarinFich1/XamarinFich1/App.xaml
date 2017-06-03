@@ -6,12 +6,25 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
+            <!--Colores-->
+            <Color x:Key="TitleTextColor">#2196F3</Color> <!--Color de titulo de texto celeste-->
+            <Color x:Key="PrimaryrBackgroundColor">#272727</Color> <!--Color de fondo oscuro-->
+            <Color x:Key="CSharpColor">#690081</Color> <!--Color de C#-->
+            <Color x:Key="ContrastOrangeColor">#ED9519</Color>
+            
+            <!--Estilos-->
             <Style TargetType ="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="#2196F3"/>
-                <Setter Property="BarTextColor" Value="#ffffff"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource CSharpColor}"/>
+                <Setter Property="BarTextColor" Value="White"/>
             </Style>
-            <Color x:Key="TitleTextColor">#2196F3</Color>
-            <Color x:Key="ColoPrimaryrBackgroung">#272727</Color>
+            <Style TargetType="Button" x:Key="NavigateButton">
+                <Setter Property="HeightRequest" Value="70"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource CSharpColor}"></Setter>
+                <Setter Property="Margin" Value="7,5"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+                
+            </Style>
         </ResourceDictionary>
 
 	</Application.Resources>

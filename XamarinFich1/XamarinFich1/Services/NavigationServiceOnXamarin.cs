@@ -71,6 +71,14 @@ namespace XamarinFich1.Services
                         });
                         break;
                     }
+                case "Basicos de C#":
+                    {
+                        App.NavigationService.PushAsync(new Views.VTeoriaBasico()
+                        {
+                            BindingContext = new ViewModels.VMTeoriaBasico(new NavigationServiceOnXamarin())
+                        });
+                        break;
+                    }
                 default:
                     break;
             }

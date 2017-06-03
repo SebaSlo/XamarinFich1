@@ -50,6 +50,7 @@
     <Compile Include="ViewModels\VMExercise.cs" />
     <Compile Include="ViewModels\VMMain.cs" />
     <Compile Include="ViewModels\VMTeoria.cs" />
+    <Compile Include="ViewModels\VMTeoriaBasico.cs" />
     <Compile Include="ViewModels\VMWPF.cs" />
     <Compile Include="ViewModels\VMXamarin.cs" />
     <Compile Include="Views\VCalculadora.xaml.cs">
@@ -66,6 +67,21 @@
     </Compile>
     <Compile Include="Views\VTeoria.xaml.cs">
       <DependentUpon>VTeoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VTeoriaBasico.xaml.cs">
+      <DependentUpon>VTeoriaBasico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VTeoriaClases.xaml.cs">
+      <DependentUpon>VTeoriaClases.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VTeoriaContenedores.xaml.cs">
+      <DependentUpon>VTeoriaContenedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VTeoriaFlujos.xaml.cs">
+      <DependentUpon>VTeoriaFlujos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VTeoriaLinq.xaml.cs">
+      <DependentUpon>VTeoriaLinq.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VWPF.xaml.cs">
       <DependentUpon>VWPF.xaml</DependentUpon>
@@ -103,7 +119,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\VTeoriaClases.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\VEjercicios.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -136,6 +157,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\VCalculadora.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\VTeoriaContenedores.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\VTeoriaFlujos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\VTeoriaLinq.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\VTeoriaBasico.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

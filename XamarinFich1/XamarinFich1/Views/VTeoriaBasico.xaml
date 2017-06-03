@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFich1.Views.VTeoriaBasico"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="Titulo">
+                <Setter Property="TextColor" Value="#2196F3"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="28"></Setter>
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="Codigo">
+                <Setter Property="Margin" Value="20,10,20,10"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryrBackgroundColor}"></Setter>
+                <Setter Property="Margin" Value="7,15,7,15"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="CornerRadius" Value="5"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView Margin="10">
+        <StackLayout>
+            <Label Text="VARIABLES" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+            <Label Text="Una variable representa un espacio de memoria que almacena un tipo específico de dato. Para declarar una variable, se usa la siguiente sintaxis"></Label>
+            <Frame>
+                <Label Text="[Alcance] [Tipo] [Nombre];" Style="{StaticResource Key=Codigo}"></Label>
+            </Frame>
+            <Label>
+                * Alcance: public, private, protected, internal, protected internal.
+* Tipo: byte, sbyte, char, int, uint, float, double, decimal, bool, cualquier_objeto, etc.
+                
+Para asignar una variable, usamos el signo =
+            </Label>
+            <Frame>
+                <Label Text="[Nombre] = [valor];" Style="{StaticResource Key=Codigo}"></Label>
+            </Frame>
+            <Label>También se puede hacer una asignación en la declaración</Label>
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    int varInt = 0;
+private double varDouble = 55.8979879;
+private bool varBool = true;
+                </Label>
+            </Frame>
+            <Label Style="{StaticResource Key=Titulo}">TIPOS DE DATOS PRIMITIVOS</Label>
+            <Label>
+                En C# tenemos los siguientes tipos de datos primitivos. Se llaman de esa manera porque son los mas elementales. Son tipos valor (concepto que meremos más adelante).
+
+     Numéricos: byte, sbyte, char, int, uint, float, double, decimal
+     Lógicos: bool</Label>
+
+            <Label Style="{StaticResource Key=Titulo}">TIPOS DE DATOS REFERENCIADOS (OBJETOS)</Label>
+            <Label>
+                Cuando se habla de objetos, debemos pensar que las variables que los representan, no contienen al objeto en sí, sino que es una referencia al espacio de memoria donde se encuentra el objeto.
+Es el mismo concepto de puntero (en realidad, es lo mismo, todo objeto en C# es un puntero que apunta a la dirección de memoria donde se encuentran los datos).
+C# es un lenguaje orientado a objetos. Lo que significa que todo lo que se crea, es un objeto.
+En c# tenemos el objeto String para representar una cadena de caracteres. Pero también, encontramos el tipo string (con minúsculas). La diferencia se verá más adelante.
+            </Label>
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    public string varString = ''Hola, soy una cadena de texto. Soy un objeto, no te confundas!!'';
+                </Label>
+            </Frame>
+
+            <Label Style="{StaticResource Key=Titulo}">ENUMERADORES</Label>
+            <Label>
+                Un enumerador, es una estructura que se usa para crear etiquetas. Cada etiqueta referencia un numero entero en base cero.
+
+            DECLARACION:
+            </Label>
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    enum [nombre de la enumeracion] { [valor1], [valor2], ... }
+                </Label>
+            </Frame>
+            <Label>
+                La declaración de un enum crea un NUEVO TIPO DE DATO. Esto quiere decir que el nombre de la enumeracion es un tipo. Si es un tipo, se pueden declarar variables de ese tipo. Asignar y recuperar su valor con la salvedad de que los valores deben ser alguno de la lista con la que se define el enum.
+            </Label>
+
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    enum tipoEnum { uno, dos, tres };
+tipoEnum varEnum = tipoEnum.dos;
+                </Label>
+            </Frame>
+
+            <Label Style="{StaticResource Key=Titulo}">ARREGLOS</Label>
+            <Label>Un arreglo en C# es un objeto que referencia un conjunto de datos del mismo tipo
+En memoria, los datos se encuentran de forma contígua, esto es, uno al lado del otro.
+A diferencia de C++, en C# no existen (a simple vista) los punteros. Los arreglos, no
+aceptan aritmética de punteros ni se pueden declarar como tal.
+Otra diferencia a los arreglos de C++ es que, en C#, siempre se les debe asignar un espacio
+en memoria por medio del operador new.
+                
+Declaracion:
+            </Label>
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    [tipo][] [Nombre] = new [tipo][Cantid de elementos];
+                </Label>
+            </Frame>
+
+            <Label>
+                En el siguiente ejemplo, se declara un arreglo de tipo int con 10 elementos. También se declara un arreglo de tipo object. ¿Tiene idea qué puede almacenar este arreglo?
+            </Label>
+            <Frame>
+                <Label Style="{StaticResource Key=Codigo}">
+                    int[] arrEnteros = new int[10];
+object[] arrObject = new object[20];"
+                </Label>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
