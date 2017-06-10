@@ -42,11 +42,12 @@
                    Orientation="Horizontal"
                    HorizontalOptions="FillAndExpand"
                    BackgroundColor="{StaticResource CSharpColor}">
-                <Label Text="Footer" 
-               HorizontalTextAlignment="Center" 
-               HorizontalOptions="FillAndExpand" 
-               TextColor="Black"
-               FontAttributes="Bold"/>
+                <Label 
+                    Text="Footer" 
+                    HorizontalTextAlignment="Center" 
+                    HorizontalOptions="FillAndExpand" 
+                    TextColor="Black"
+                    FontAttributes="Bold"/>
             </StackLayout>
         </ListView.Footer>
     </ListView>

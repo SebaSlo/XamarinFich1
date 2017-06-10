@@ -3,8 +3,198 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinFich1.Views.VTeoriaContenedores">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
-        </StackLayout>
+        <ScrollView BackgroundColor="{StaticResource Key=PrimaryBackgroundColor}">
+            <StackLayout>
+                
+                <Frame Style="{StaticResource Key=Tarjeta}">
+                    <StackLayout>
+                        <Label Text="La clase List&lt;T>" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+                        <Label>
+                            En C++ se cuenta con la clase vector&lt;T&gt;para manejo de un conjunto de datos adyacentes en memoria.
+    La clase vector, no existe en C#. En su lugar, se cuenta con la clase genérica List&lt;T&gt; que funciona de la misma manera que vector en C++.
+    Se encuentra implementada por arreglos y se posee el operador de indexación para acceder a los elementos, por lo cual, el acceso es muy veloz.
+    Cuenta con operaciones de agregar, eliminar, buscar, insertar, ordenar, etc.
+    La ventaja de esta clase es la velocidad de acceso a los elementos, es O(1). Las demás operaciones, tienen un costo algorítmico mucho mayor.
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+                                //Declaracion
+List&lt;int&gt;oLista;
+//Inicialización.
+oLista = new List&lt;int&gt;();
+oLista = new List&lt;int&gt;(new int[] { 1, 2, 3, 4, 5, 6 });
+//Agregar elementos -> Método Add()
+oLista.Add(1);
+oLista.Add(2);
+//Eliminar elementos -> Método Remove()
+oLista.Remove(3);
+//Acceder a los elementos -> se usa el operador de indexacón [i]
+//La propiedad Count contiene informacion de cuántos elementos posee la lista
+for (int i = 0; i&lt;oLista.Count; i++)
+{
+    //El método WriteLine recibe cualquier tipo de string. Los string se concatenan con +.
+    //Además, los tipos de datos primitivos se convierten a string automáticamente.
+    Console.Write(oLista[i] + " "); //Acceso a los elementos
+}
+//Ordenar la lista
+oLista.Sort();
+//Buscar elementos ->Método Find() y FindAt() -> no los vemos. Usar Array.BinarySearch.
+var posicion_del_elemento = Array.BinarySearch(oLista.ToArray(), 5);
+                            </Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource Key=Tarjeta}">
+                    <StackLayout>
+                        <Label Text="La clase LinkedList&lt;T&gt; y LinkedListNode&lt;T&gt;" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+                        <Label>
+    En C#, la clase que maneja listas doblemente enlazadas, se llama LinkedList y también es genérica (sus elementos pueden ser cualquier tipo de dato). Para manejar una lista enlazada, se necesita contar con interadores que manejen el acceso a los elementos ya que no posee indexación, es decir, no se puede usar [] para acceder a los elementos. Si o si, necesitamos iniciar un bucle y movernos a travez de la lista para llegar a determinado valor. Esta funcionalidad, está representada por la clase LinkedListNode&lt;T&gt;, genérica.
+    Este tipo de estructura tiene la ventaja de contar con operaciones muy veloces para agregar, eliminar e insertar elementos, pero el acceso a ellos depende de la cantidad de elementos de la lista, es decir, es O(n).
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+                                //Declaracion e inicialización
+LinkedList&lt;int&gt;oLinked;
+oLinked = new LinkedList&lt;int&gt;(); //Lista con cero elementos
+oLinked = new LinkedList&lt;int&gt;(new int[] { 1, 2, 3, 4, 5, 7 });
+                            
+                            
+//Recorrer sus elementos
+//Defino un 'iterador' al inicio de la lista
+LinkedListNode&lt;int&gt;it = oLinked.First;
+while (it != null)
+{
+    Console.Write(it.Value + " ");
+    it = it.Next;
+}
+                            
+                            
+//Agregar y eliminar elementos
+it = oLinked.Last;
+oLinked.AddFirst(4); //Agrega un elemento al inicio
+oLinked.AddLast(4); //Agrega un elemento al final
+oLinked.AddBefore(it,5); //Agrega un elemento antes del valor apuntado por it
+oLinked.AddAfter(it,4); //Agrega un elemento despues del valor apuntado por it
+
+oLinked.Remove(5); //Quita el elemento 5, su primer aparición.
+oLinked.RemoveFirst(); //Quita el primer elemento
+oLinked.RemoveLast(); //Quita el ultimo elemento
+                            </Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource Key=Tarjeta}">
+                    <StackLayout>
+                        <Label Text="La clase Dictionary&lt;TKey,TValue&gt;" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+                        <Label>
+    La clase Dictionary representa un par clave valor que podemos utilizar para representar un mapeo de datos. No es más que un mapa.
+    Si un par clave-valor no existe, se crea en el momento de la asignacion.
+    Las claves no pueden repetirse, al querer hacerlo, se pisa el valor anterior.
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+Dictionary&lt;string, int&gt;map = new Dictionary&lt;string, int&gt;();
+map["B"] = 2;
+map["A"] = 1;
+Console.WriteLine(map["A"]);
+
+//Peguntar si existe una clave.
+Console.WriteLine(map.ContainsKey("A"));
+Console.WriteLine(map.ContainsValue(1));
+Console.WriteLine(map.ContainsValue(2));
+//chequear valores
+foreach (var item in map)
+{
+    Console.WriteLine(item.Value);
+}
+//Recuperar todas las claves y todos los valores
+var claves = map.Keys;
+var valores = map.Values;
+                            </Label>
+                        </Frame>
+
+                        <Label>
+                            La clase SortedDictionary&lt;T&gt;
+                        Es igual a la anterior, solo que la estructura se ordena automáticamente según la clave
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+SortedDictionary&lt;string, int&gt;Smap = new SortedDictionary&lt;string, int&gt;();
+Smap["B"] = 2;
+Smap["A"] = 1;
+foreach (var item in Smap)
+{
+    Console.WriteLine(item.Value);
+}
+                            </Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource Key=Tarjeta}">
+                    <StackLayout>
+                        <Label Text="CONJUNTOS - las clases SortedSet&lt;T&gt; y HashSet&lt;T&gt;" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+                        <Label>
+    Un conjunto está conformado por valores de un determinado tipo. En la teoría de conjuntos, no importa el órden en que estos se encuentran. En programación, los lenguajes suelen poseer clases que manejan conjuntos pero los ordenan automáticamente. El programador debe suponer que no es así.
+ C# proporciona dos clases para esto. Una que se ordena mediante algún criterio, y otra que no se ordena. En ambos, los elementos no se pueden repetir. Al querer agregar repeticiones, la clase se encarga de no agregarlos.
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+SortedSet&lt;int&gt;Sset = new SortedSet&lt;int&gt;(new int[] { 7, 2,3 , 4, 5, 6, 1, 7, 7, 7 });
+Console.WriteLine("Conjuntos");
+foreach (var item in Sset)
+{
+    Console.Write(item + " ");
+}
+HashSet&lt;int&gt;Hset = new HashSet&lt;int&gt;(new int[] { 4, 5, 7, 1, 9, 3, 6, 3, 3, 3,4,8 });
+Console.WriteLine();
+Console.WriteLine("Conjuntos hash");
+foreach (var item in Hset)
+{
+    Console.Write(item + " ");
+}
+                            </Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource Key=Tarjeta}">
+                    <StackLayout>
+                        <Label Text="PILAS Y COLAS - clases Queue&lt;T&gt; y Stack&lt;T&gt;" Style="{Binding Source={StaticResource Key=Titulo}}"></Label>
+                        <Label>
+Este tipo de estructuras también están soportadas por el lenguaje. Las pilas (Stack) son del tipo Last In, First Out (ultimo en entrar, primero en salir). Las colas (Queue) son del tipo First In, First Out (primero en entrar, primero en salir).
+Esto quiere decir que, en las pilas, agregamos y quitamos elementos solo desde el inicio, no podemos tocar el final.
+En las colas, agregamos en el FINAL, y sacamos elementos por el INICIO.
+                        </Label>
+                        <Frame>
+                            <Label Style="{Binding Source={StaticResource Key=Codigo}}" LineBreakMode="WordWrap">
+Queue&lt;int&gt;cola = new Queue&lt;int&gt;(new int[] { 5, 2, 5, 6, 2 });
+cola.Enqueue(100);
+cola.Dequeue();
+Console.WriteLine();
+foreach (var item in cola)
+{
+    Console.Write(item + " ");
+}
+Console.WriteLine();
+
+Stack&lt;int&gt;pila = new Stack&lt;int&gt;(new int[] { 1,2,3,4,5,6});
+pila.Push(100);
+pila.Pop();
+Console.WriteLine();
+foreach (var item in pila)
+{
+    Console.Write(item + " ");
+}
+Console.WriteLine();
+                            </Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

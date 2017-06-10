@@ -41,6 +41,7 @@
     <Compile Include="Helpers\Command.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Models\Calc\Calculadora.cs" />
+    <Compile Include="Models\Text\DataText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\INavegable.cs" />
     <Compile Include="Services\NavigationServiceOnXamarin.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="ViewModels\VMMain.cs" />
     <Compile Include="ViewModels\VMTeoria.cs" />
     <Compile Include="ViewModels\VMTeoriaBasico.cs" />
+    <Compile Include="ViewModels\VMTeoriaClases.cs" />
     <Compile Include="ViewModels\VMWPF.cs" />
     <Compile Include="ViewModels\VMXamarin.cs" />
     <Compile Include="Views\VCalculadora.xaml.cs">

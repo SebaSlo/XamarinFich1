@@ -9,10 +9,10 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Button Command="{Binding NavigateCommand}" CommandParameter="{Binding Path=Text, Source={Reference Name=btBasicos}}" x:Name="btBasicos" Style="{StaticResource NavigateButton}" Grid.Column="0" Grid.Row="0" Text="Basicos de C#"></Button>

@@ -10,6 +10,7 @@ namespace ConsoleFich.View
     public class VMain:VMBase
     {
 
+
         private OpcionesConsoleApp opCode;
         public OpcionesConsoleApp OpCode
         {

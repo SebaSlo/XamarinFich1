@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using XamarinFich1.Helpers;
-using XamarinFich1.Model.Calc;
+using XamarinFich1.Models.Calc;
 using XamarinFich1.Services;
 
 namespace XamarinFich1.ViewModels

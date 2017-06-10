@@ -79,6 +79,19 @@ namespace XamarinFich1.Services
                         });
                         break;
                     }
+                case "Tipos de Clases y detalles de ellas":
+                    {
+                        App.NavigationService.PushAsync(new Views.VTeoriaClases()
+                        {
+                            BindingContext = new ViewModels.VMTeoriaClases(new NavigationServiceOnXamarin())
+                        });
+                        break;
+                    }
+                case "Contenedores de datos":
+                    {
+                        App.NavigationService.PushAsync(new Views.VTeoriaContenedores());
+                        break;
+                    }
                 default:
                     break;
             }

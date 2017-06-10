@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XamarinFich1.Model.Calc
+namespace XamarinFich1.Models.Calc
 {
     public class Calculadora
     {
