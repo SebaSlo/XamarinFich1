@@ -6,6 +6,39 @@ using XamarinFich1.Models.Text;
 
 namespace ConsoleFich
 {
+    public abstract class Figure
+    {
+        public abstract void Perimetro();
+        public abstract void Area();
+    }
+
+    class Cuadrado:Figure
+    {
+        public double lado;
+        public double area, perimetro;
+
+        public Cuadrado(){}
+
+        public override void Area()
+        {
+            area = lado * lado;
+        }
+
+        public override void Perimetro()
+        {
+            perimetro = 4 * lado;
+        }
+
+        public void ListaCuad()
+        {
+            List<Figure> lC = new List<Figure>();
+            lC.Add(new Cuadrado() {lado=2 });
+            lC.Add(new Cuadrado(){lado=4 });
+            lC.Add(new Cuadrado(){lado=6 });
+            lC.Add(new Cuadrado() { lado = 7 });
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -26,34 +59,42 @@ namespace ConsoleFich
                 La ventaja de esta clase es la velocidad de acceso a los elementos, es O(1). Las demás operaciones, tienen un costo algorítmico mucho mayor.
              */
             //Declaracion
-            List<int> oLista;
-            //Inicialización.
-            oLista = new List<int>();
-            oLista = new List<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            //Agregar elementos -> Método Add()
-            oLista.Add(1);
-            oLista.Add(2);
-            //Eliminar elementos -> Método Remove()
-            oLista.Remove(3);
-            //Acceder a los elementos -> se usa el operador de indexacón [i]
-            //La propiedad Count contiene informacion de cuántos elementos posee la lista
-            for (int i = 0; i < oLista.Count; i++)
+            System.Collections.Generic.List<int> L ;
+            L = new List<int>(new int[] { 1, 2, 3, 4, 5 });
+            L.Add(3);
+
+            L.Insert(2, 5);
+
+
+            L.RemoveAt(2);
+
+            L.Sort();
+            var g = Array.BinarySearch(L.ToArray(), 6);
+
+            L[2] = 10000;
+            for (int i = 0; i < L.Count; i++)
             {
-                //El método WriteLine recibe cualquier tipo de string. Los string se concatenan con +.
-                //Además, los tipos de datos primitivos se convierten a string automáticamente.
-                Console.Write(oLista[i] + " "); //Acceso a los elementos
+                Console.Write("Elemento {0}: {1} ",i, L[i]); 
             }
-            //Ordenar la lista
-            oLista.Sort();
-            //Buscar elementos -> Método Find() y FindAt() -> no los vemos. Usar Array.BinarySearch.
-            var posicion_del_elemento = Array.BinarySearch(oLista.ToArray(), 5);
+
+            Console.WriteLine(g);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
 
             /* La clase LinkedList<T> y LinkedListNode<T>
              * En C#, la clase que maneja listas doblemente enlazadas, se llama LinkedList y también es genérica (sus elementos pueden ser cualquier tipo de dato). Para manejar una lista enlazada, se necesita contar con interadores que manejen el acceso a los elementos ya que no posee indexación, es decir, no se puede usar [] para acceder a los elementos. Si o si, necesitamos iniciar un bucle y movernos a travez de la lista para llegar a determinado valor. Esta funcionalidad, está representada por la clase LinkedListNode<T>, genérica.
              * Este tipo de estructura tiene la ventaja de contar con operaciones muy veloces para agregar, eliminar e insertar elementos, pero el acceso a ellos depende de la cantidad de elementos de la lista, es decir, es O(n).
              */
-             //Declaracion e inicialización
-            LinkedList<int> oLinked;
+            //Declaracion e inicialización
+            System.Collections.Generic.LinkedList<int> oLinked;
             oLinked = new LinkedList<int>(); //Lista con cero elementos
             oLinked = new LinkedList<int>(new int[] { 1, 2, 3, 4, 5, 7 });
 
@@ -63,7 +104,7 @@ namespace ConsoleFich
             while (it != null)
             {
                 Console.Write(it.Value + " ");
-                it = it.Next;
+                it = it.Next;                
             }
             //Agregar y eliminar elementos
             it = oLinked.Last;
@@ -89,7 +130,7 @@ namespace ConsoleFich
             map["B"] = 2;
             map["A"] = 1;
             Console.WriteLine(map["A"]);
-
+            
             //Peguntar si existe una clave.
             Console.WriteLine(map.ContainsKey("A"));
             Console.WriteLine(map.ContainsValue(1));
@@ -113,6 +154,16 @@ namespace ConsoleFich
             {
                 Console.WriteLine(item.Value);
             }
+
+            Dictionary<string, ConsoleColor> SettingsConsoleColor;
+            SettingsConsoleColor = new Dictionary<string, ConsoleColor>();
+
+            SettingsConsoleColor["color fondo"] = ConsoleColor.Magenta;
+            SettingsConsoleColor["color texto"] = ConsoleColor.DarkBlue;
+
+            Console.BackgroundColor = SettingsConsoleColor["color fondo"];
+            Console.BackgroundColor = SettingsConsoleColor["color texto"];
+
 
             /*CONJUNTOS - las clases SortedSet<T> y HashSet<T>
              * Un conjunto está conformado por valores de un determinado tipo. En la teoría de conjuntos, no importa el órden en que estos se encuentran. En programación, los lenguajes suelen poseer clases que manejan conjuntos pero los ordenan automáticamente. El programador debe suponer que no es así.
@@ -149,6 +200,7 @@ namespace ConsoleFich
             Stack<int> pila = new Stack<int>(new int[] { 1,2,3,4,5,6});
             pila.Push(100);
             pila.Pop();
+            var peek = pila.Peek();
             Console.WriteLine();
             foreach (var item in pila)
             {
